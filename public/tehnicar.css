@@ -69,6 +69,7 @@ content: "\2796"; /* Unicode character for "minus" sign (-) */
 
 /* Full-width input fields */
   input[type=text], input[type=password] {
+    color:#033c27;
   width: 100%;
   padding: 15px;
   margin: 20px;
