@@ -4,13 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tehnicar.css">
     <script src="https://kit.fontawesome.com/7d21bf22c4.js" crossorigin="anonymous"></script>
     <title>tehnicar</title>
 </head>
 <body>
     <h1>Dobro došli. Prijavljeni ste kao laboratorijski tehničar</h1>
     <h2>Odaberite da li želite gledati rezultate prijašnjih pacijenata, ili unijeti novog pacijenta</h2>
-    <button>Rezultati pacijenata</button>
-    <button>Novi pacijent</button>
+    <button class="accordion">Novi pacijent</button>
+    <div class="panel">
+        tezina<input type="text"> <br>
+        procenat teskih metala<input type="text" name="" id=""><br>
+        hgb<input type="text" name="" id=""><br>
+        tr plt<input type="text" name="" id=""><br>
+        ac uricum<input type="text" name="" id=""><br>
+        ldh<input type="text" name="" id=""><br>
+        natrij<input type="text" name="" id=""><br>
+        <button>Dodaj</button>
+    </div>
+
+    <h2>Rezultati pacijenata</h2>
+
+    <script src="tehnicar.js"></script>
 </body>
 </html>
