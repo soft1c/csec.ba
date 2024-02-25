@@ -99,6 +99,7 @@ function checkRole(role) {
   
 
   app.post('/dodaj_pacijenta',(req,res)=>{
+    if(req.session.role==='tehnicar'){
     const {tezina,procenat,hgb,tr_plt,ac_uricum,ldh,natrij} = req.body;
     const query = `INSERT INTO pacijenti (tezina, procenat_nesto, hgb, tr_plt, ac_uricum, ldh, natrij) VALUES (?, ?, ?, ?, ?, ?, ?)`;
     connection.query(query, [tezina, procenat, hgb, tr_plt, ac_uricum, ldh, natrij], (error, results, fields) => {    
@@ -108,6 +109,7 @@ function checkRole(role) {
             }
             res.redirect('/tehnicar');
     });
+}
   })
 
   app.get('/pacijenti',(req,res)=>{
@@ -120,6 +122,7 @@ function checkRole(role) {
 
 
   app.post('/azurirajTezinu', (req, res) => {
+    if(req.session.role==='ljekar'){
     const { id, tezina } = req.body;
     const query = "UPDATE pacijenti SET tezina = ? WHERE id = ?";
     connection.query(query, [tezina, id], (error, results) => {
@@ -129,6 +132,7 @@ function checkRole(role) {
         }
         res.send('Težina pacijenta uspešno ažurirana.');
     });
+}
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
