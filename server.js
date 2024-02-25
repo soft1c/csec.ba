@@ -50,15 +50,15 @@ app.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
     
-    let query = `SELECT * FROM ljekar WHERE username = '${username}' AND password = '${password}'`;
-    connection.query(query, (error, results, fields) => {
+    let query = 'SELECT * FROM ljekar WHERE username = ? AND password = ?';
+    connection.query(query, [username, password],(error, results, fields) => {
         if (error) throw error;
         if (results.length > 0) {
             req.session.role = 'ljekar';
             res.sendFile('ljekar.html', {root: './public'});
         } else {
-            let query2 = `SELECT * FROM tehnicar WHERE username = '${username}' AND password = '${password}'`;
-            connection.query(query2, (error, results, fields) => {
+            let query2 = 'SELECT * FROM tehnicar WHERE username = ? AND password = ?';
+            connection.query(query2,[username, password] ,(error, results, fields) => {
                 if (error) throw error;
                 if (results.length > 0) {
                     req.session.role = 'tehnicar';
@@ -96,10 +96,13 @@ function checkRole(role) {
 
   app.post('/dodaj_pacijenta',(req,res)=>{
     const {tezina,procenat,hgb,tr_plt,ac_uricum,ldh,natrij} = req.body;
-    const query = `INSERT INTO pacijent (tezina, procenat_nesto, hgb, tr_plt, ac_uricum, ldh, natrij) VALUES ('${tezina}', '${procenat}', '${hgb}', '${tr_plt}', '${ac_uricum}', '${ldh}', '${natrij}')`;
-    connection.query(query, (error, results, fields) => {
-        if (error) throw error;
-        res.redirect('/tehnicar');
+    const query = `INSERT INTO pacijenti (tezina, procenat_nesto, hgb, tr_plt, ac_uricum, ldh, natrij) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+    connection.query(query, [tezina, procenat, hgb, tr_plt, ac_uricum, ldh, natrij], (error, results, fields) => {    
+        if (error) {throw error;}
+            else{
+                console.log("idemo");
+            }
+            res.redirect('/tehnicar');
     });
   })
 
@@ -112,7 +115,9 @@ function checkRole(role) {
   });
 
 
-
+  app.post('/postavi_tezinu',(req,res)=>{
+    
+  })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 

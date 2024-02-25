@@ -93,7 +93,7 @@ connection.query(createTable1, (error, results, fields) => {
 
 
 
-
+/* 
 let values = [['ljekar', 'ljekar']]; // Array of arrays for multiple rows, even if it's just a single row
 let values1 = [['tehnicar', 'tehnicar']];
 
@@ -108,3 +108,10 @@ connection.query(query1, [values1], (error, results, fields) => {
     if (error) throw error;
     console.log(`${results.affectedRows} rows inserted.`);
 });
+ */
+
+let query='SELECT * FROM pacijenti ORDER BY id  LIMIT 100';
+connection.query(query, (error, results, fields) => {
+    if (error) throw error;
+    console.log(results);
+})
