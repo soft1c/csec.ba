@@ -13,13 +13,15 @@
     <h2>Odaberite da li želite gledati rezultate prijašnjih pacijenata, ili unijeti novog pacijenta</h2>
     <button class="accordion">Novi pacijent</button>
     <div class="panel">
-        tezina<input type="text"> <br>
-        procenat teskih metala<input type="text" name="" id=""><br>
-        hgb<input type="text" name="" id=""><br>
-        tr plt<input type="text" name="" id=""><br>
-        ac uricum<input type="text" name="" id=""><br>
-        ldh<input type="text" name="" id=""><br>
-        natrij<input type="text" name="" id=""><br>
+        <form action="/dodaj_pacijenta" method="post">
+            tezina<input type="text" name="tezina" id="tezina"> <br>
+            procenat teskih metala<input type="text" name="procenat" id="procenat"><br>
+            hgb<input type="text" name="hgb" id="hgb"><br>
+            tr plt<input type="text" name="tr_plt" id="tr_plt"><br>
+            ac uricum<input type="text" name="ac_uricum" id="ac_uricum"><br>
+            ldh<input type="text" name="ldh" id="ldh"><br>
+            natrij<input type="text" name="natrij" id="natrij"><br>
+        </form>
         <button>Dodaj</button>
     </div>
 
