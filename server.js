@@ -59,14 +59,14 @@ app.post('/login', (req, res) => {
         if (error) throw error;
         if (results.length > 0) {
             req.session.role = 'ljekar';
-            res.sendFile('ljekar.html', {root: './public'});
+            res.redirect('/ljekar');
         } else {
             let query2 = 'SELECT * FROM tehnicar WHERE username = ? AND password = ?';
             connection.query(query2,[username, password] ,(error, results, fields) => {
                 if (error) throw error;
                 if (results.length > 0) {
-                    req.session.role = 'tehnicar';
-                    res.sendFile('tehnicar.html', {root: './public'});
+                    req.session.role = 'ljekar';
+            res.redirect('/tehnicar');
                 } else {
                     res.sendFile('login.html', {root: './public'});
                 }
