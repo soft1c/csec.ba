@@ -19,15 +19,16 @@ connection.connect(err => {
 });
 
 //drop table pacijenti
-/* let query3='DROP TABLE IF EXISTS pacijenti';
+/* /*  let query3='DROP TABLE IF EXISTS pacijenti';
 connection.query(query3, (error, results, fields) => {
     if (error) throw error;
     console.log("Table 'pacijenti' dropped.");
-});
+}); */
 
-const createTable = `CREATE TABLE IF NOT EXISTS pacijenti (
+
+/* const createTable = `CREATE TABLE IF NOT EXISTS pacijenti (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    tezina VARCHAR(10),
+    tezina VARCHAR(100),
     procenat_nesto DECIMAL(10,3),
     hgb DECIMAL(10,2),
     tr_plt INT,
@@ -51,22 +52,25 @@ fs.createReadStream('pacijenti.csv')
     .on('end', () => {
         const insertQuery = 'INSERT INTO pacijenti (tezina, procenat_nesto, hgb, tr_plt, ac_uricum, ldh, natrij) VALUES ?';
         const values = results.map(row => [
-            row.tezina === '' ? null : row.tezina,
-            row.procenat_nesto === '' ? null : row.procenat_nesto,
-            row.hgb === '' ? null : row.hgb,
-            row.tr_plt === '' ? null : row.tr_plt,
-            row.ac_uricum === '' ? null : row.ac_uricum,
-            row.ldh === '' ? null : row.ldh,
-            row.natrij === '' ? null : row.natrij
+            row.Laka_Srednja_Teska === '' ? null : row.Laka_Srednja_Teska,
+            row.Mid === '' ? null : row.Mid,
+            row.HGB === '' ? null : row.HGB,
+            row.TR_PLT === '' ? null : row.TR_PLT,
+            row.AC_URICUM === '' ? null : row.AC_URICUM,
+            row.LDH === '' ? null : row.LDH,
+            row.NATRIJ === '' ? null : row.NATRIJ
         ]);
 
         connection.query(insertQuery, [values], (error, results, fields) => {
-            if (error) throw error;
+            if (error){
+                console.error('Error inserting row:', values, 'Error:', error.message);
+                
+            }
             console.log(`${results.affectedRows} rows inserted.`);
             connection.end();
         });
-    });
- */
+    });  */
+ 
 
 /* let createTable = `CREATE TABLE IF NOT EXISTS ljekar (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -110,8 +114,9 @@ connection.query(query1, [values1], (error, results, fields) => {
 });
  */
 
-let query='SELECT * FROM pacijenti ORDER BY id  LIMIT 100';
+let query='SELECT * FROM pacijenti ';
 connection.query(query, (error, results, fields) => {
     if (error) throw error;
     console.log(results);
-})
+}) 
+
