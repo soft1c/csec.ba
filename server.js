@@ -4,6 +4,8 @@ const app = express();
 const port = 3000;
 const session = require('express-session');
 
+
+
 app.use(session({
   secret: 'your_secret_key', 
   resave: false,
@@ -40,9 +42,11 @@ connection.connect(function(err) {
 
 });
 
+app.get('/',(req,res)=>{
+    res.sendFile('login.html', {root: './public'});
+})
 
-
-app.get('/', (req, res) => {
+app.get('/login', (req, res) => {
     res.sendFile('login.html', {root: './public'});
 });
 
