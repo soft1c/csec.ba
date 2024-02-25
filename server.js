@@ -19,7 +19,6 @@ connection.connect(function(err) {
     }
 
     console.log('Connected as id ' + connection.threadId);
-    //list all databases in mysql
 
     connection.query('SHOW DATABASES', function (error, results, fields) {
         if (error) throw error;
@@ -33,7 +32,8 @@ connection.connect(function(err) {
 
 
 
-app.get('/', (req, res) => res.send('Hello World!'));
+
+
 
 app.get('/',(req,res)=>{
     res.sendFile('login.html',{root:__dirname});
