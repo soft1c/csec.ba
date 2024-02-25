@@ -65,8 +65,8 @@ app.post('/login', (req, res) => {
             connection.query(query2,[username, password] ,(error, results, fields) => {
                 if (error) throw error;
                 if (results.length > 0) {
-                    req.session.role = 'ljekar';
-            res.redirect('/tehnicar');
+                    req.session.role = 'tehnicar';
+                    res.redirect('/tehnicar');
                 } else {
                     res.sendFile('login.html', {root: './public'});
                 }
