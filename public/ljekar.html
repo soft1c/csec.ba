@@ -45,9 +45,9 @@
           tr.innerHTML = `
               <td>
                 <select name="tezina" data-id="${row.id}">
-                  <option value="laka" ${row.tezina === 'laka' ? 'selected' : ''}>Laka</option>
-                  <option value="srednja" ${row.tezina === 'srednja' ? 'selected' : ''}>Srednja</option>
-                  <option value="teska" ${row.tezina === 'teska' ? 'selected' : ''}>Teška</option>
+                  <option style="color: #388288" value="laka" ${row.tezina === 'laka' ? 'selected' : ''}>Laka</option>
+                  <option style="color: #388288" value="srednja" ${row.tezina === 'srednja' ? 'selected' : ''}>Srednja</option>
+                  <option style="color: #388288" value="teska" ${row.tezina === 'teska' ? 'selected' : ''}>Teška</option>
                 </select>
               </td>
               <td>${row.procenat_nesto || ''}</td>
