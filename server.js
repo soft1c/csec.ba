@@ -4,6 +4,8 @@ const app = express();
 const port = 3000;
 
 
+app.use(express.static('public'));
+
 const connection = mysql.createConnection({
     host: '127.0.0.1', 
     port: 3307, 
@@ -29,23 +31,17 @@ connection.connect(function(err) {
 
 
 
+app.get('/', (req, res) => {
+    res.sendFile('login.html', {root: './public'});
+});
 
+app.get('/tehnicar', (req, res) => {
+    res.sendFile('tehnicar.html', {root: './public'});
+});
 
-
-
-
-
-app.get('/',(req,res)=>{
-    res.sendFile('login.html',{root:__dirname});
-})
-
-app.get('/tehnicar',(req,res)=>{
-    res.sendFile('tehnicar.html',{root:__dirname});
-})
-
-app.get('/ljekar',(req,res)=>{
-    res.sendFile('ljekar.html',{root:__dirname});
-})
+app.get('/ljekar', (req, res) => {
+    res.sendFile('ljekar.html', {root: './public'});
+});
 
 
 
