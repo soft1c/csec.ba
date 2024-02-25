@@ -5,10 +5,10 @@ const port = 3000;
 const session = require('express-session');
 
 app.use(session({
-  secret: 'your_secret_key', // Use a secret key for session encryption
+  secret: 'your_secret_key', 
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: !true } // Set secure to true if you are using https
+  cookie: { secure: !true } 
 }));
 
 app.use(express.static('public'));
@@ -85,10 +85,32 @@ function checkRole(role) {
   app.get('/ljekar', checkRole('ljekar'), (req, res) => {
       res.sendFile('ljekar.html', {root: './public'});
   });
+
+
   
   app.get('/tehnicar', checkRole('tehnicar'), (req, res) => {
       res.sendFile('tehnicar.html', {root: './public'});
   });
+
+  
+
+  app.post('/dodaj_pacijenta',(req,res)=>{
+    const {tezina,procenat,hgb,tr_plt,ac_uricum,ldh,natrij} = req.body;
+    const query = `INSERT INTO pacijent (tezina, procenat_nesto, hgb, tr_plt, ac_uricum, ldh, natrij) VALUES ('${tezina}', '${procenat}', '${hgb}', '${tr_plt}', '${ac_uricum}', '${ldh}', '${natrij}')`;
+    connection.query(query, (error, results, fields) => {
+        if (error) throw error;
+        res.redirect('/tehnicar');
+    });
+  })
+
+  app.get('/pacijenti',(req,res)=>{
+    const query = `SELECT * FROM pacijent`;
+    connection.query(query, (error, results, fields) => {
+        if (error) throw error;
+        res.send(results);
+    });
+  });
+
 
 
 
