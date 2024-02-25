@@ -4,7 +4,7 @@ background-color: #eee;
 color: #444;
 cursor: pointer;
 padding: 28px;
-width: 50%;
+width: 100%;
 text-align: left;
 border: none;
 outline: none;
@@ -20,6 +20,8 @@ background-color: #a9a9a9;
 
 .panel {
 display: block;
+align-items: center;
+align-content: center;
 padding: 0 18px;
 background-color: white;
 max-height: 0;
