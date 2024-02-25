@@ -107,7 +107,7 @@ function checkRole(role) {
   })
 
   app.get('/pacijenti',(req,res)=>{
-    const query = `SELECT * FROM pacijent`;
+    const query = `SELECT * FROM pacijenti`;
     connection.query(query, (error, results, fields) => {
         if (error) throw error;
         res.send(results);
