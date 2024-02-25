@@ -115,8 +115,16 @@ function checkRole(role) {
   });
 
 
-  app.post('/postavi_tezinu',(req,res)=>{
-    
-  })
+  app.post('/azurirajTezinu', (req, res) => {
+    const { id, tezina } = req.body;
+    const query = "UPDATE pacijenti SET tezina = ? WHERE id = ?";
+    connection.query(query, [tezina, id], (error, results) => {
+        if (error) {
+            console.error('Greška prilikom ažuriranja težine pacijenta:', error);
+            return res.status(500).send('Došlo je do greške.');
+        }
+        res.send('Težina pacijenta uspešno ažurirana.');
+    });
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
