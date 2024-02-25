@@ -19,7 +19,7 @@ connection.connect(err => {
 });
 
 //drop table pacijenti
-let query3='DROP TABLE IF EXISTS pacijenti';
+/* let query3='DROP TABLE IF EXISTS pacijenti';
 connection.query(query3, (error, results, fields) => {
     if (error) throw error;
     console.log("Table 'pacijenti' dropped.");
@@ -66,3 +66,45 @@ fs.createReadStream('pacijenti.csv')
             connection.end();
         });
     });
+ */
+
+/* let createTable = `CREATE TABLE IF NOT EXISTS ljekar (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255),
+    password VARCHAR(255)
+)`;
+
+let createTable1= `CREATE TABLE IF NOT EXISTS tehnicar (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255),
+    password VARCHAR(255)
+)`;
+
+connection.query(createTable, (error, results, fields) => {
+    if (error) throw error;
+    console.log("Table 'ljekari' created or already exists.");
+});
+
+connection.query(createTable1, (error, results, fields) => {
+    if (error) throw error;
+    console.log("Table 'tehnicari' created or already exists.");
+}); */
+
+
+
+
+
+let values = [['ljekar', 'ljekar']]; // Array of arrays for multiple rows, even if it's just a single row
+let values1 = [['tehnicar', 'tehnicar']];
+
+let query = 'INSERT INTO ljekar (username, password) VALUES ?';
+let query1 = 'INSERT INTO tehnicar (username, password) VALUES ?';
+
+connection.query(query, [values], (error, results, fields) => {
+    if (error) throw error;
+    console.log(`${results.affectedRows} rows inserted.`);
+});
+connection.query(query1, [values1], (error, results, fields) => {
+    if (error) throw error;
+    console.log(`${results.affectedRows} rows inserted.`);
+});
