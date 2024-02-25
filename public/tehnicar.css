@@ -14,11 +14,12 @@ p {
 
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
-color: #444;
+font-size: 1.7rem;
+color: #ffffff;
 cursor: pointer;
 padding: 28px;
 width: 100%;
-text-align: left;
+text-align: center;
 border: none;
 outline: none;
 transition: 0.4s;
@@ -26,7 +27,8 @@ transition: 0.4s;
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .accordion:hover {
-background-color: #ffffff;
+color: #033c27;
+background-color: #ffffff9c;
 border-radius: 4px;
 }
 
@@ -77,6 +79,7 @@ content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
 input[type=text]:focus, input[type=password]:focus {
+    color: #033c27;
     background: -webkit-linear-gradient(left, #b9d6d3, #38818822);
     background: linear-gradient(to right, #b9d6d3, #3881881a);
   outline: none;
